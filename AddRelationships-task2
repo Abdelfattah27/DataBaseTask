@@ -1,0 +1,48 @@
+
+ALTER TABLE STUDENT 
+ADD ClassId int
+
+ALTER TABLE STUDENT 
+ADD ContactId int 
+
+CREATE TABLE Class ( 
+id int primary key identity  , 
+name nvarchar(50) ,
+floorNumber int  
+)
+
+CREATE TABLE COURSE ( 
+id int primary key identity  , 
+name nvarchar(50) ,
+bookName nvarchar(50) , 
+teacherName nvarchar(50) 
+)
+
+
+CREATE TABLE ContactInfo (
+id int primary key identity  , 
+phoneNumber nvarchar(20) , 
+City nvarchar(50) , 
+)
+
+
+CREATE TABLE studentCourses (
+studentId int  , 
+courseId int ,
+PRIMARY KEY (studentId, courseId)
+)
+
+ALTER TABLE Student
+ADD FOREIGN KEY (ContactId) REFERENCES contactInfo(id);
+
+
+ALTER TABLE Student
+ADD FOREIGN KEY (ClassId) REFERENCES Class(id);
+
+
+ALTER TABLE studentCourses
+ADD FOREIGN KEY (studentId) REFERENCES student(id);
+
+
+ALTER TABLE studentCourses
+ADD FOREIGN KEY (courseId) REFERENCES course(id);
