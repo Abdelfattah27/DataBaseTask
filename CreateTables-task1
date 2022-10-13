@@ -1,0 +1,13 @@
+-- Using MSQL
+
+CREATE DATABASE SCHOOL 
+
+USE SCHOOL 
+
+CREATE TABLE STUDENT (
+id INT PRIMARY KEY IDENTITY ,  
+first_name NVARCHAR(50) , 
+last_name NVARCHAR(50) , 
+age INT CHECK (age >= 16) ,
+CONSTRAINT UC_Name UNIQUE (first_name,last_name)
+)
